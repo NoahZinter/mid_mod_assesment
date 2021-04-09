@@ -1,17 +1,17 @@
 class Student 
 
-    attr_reader :name, :age, :scores
-    def initialize(details)
-        @name = details[:name]
-        @age = details[:age]
-        @scores = []
-    end 
+  attr_reader :name, :age, :scores
+  def initialize(details)
+    @name = details[:name]
+    @age = details[:age]
+    @scores = []
+  end 
 
-    def log_score(score)
-        @scores << score
-    end 
+  def log_score(score)
+    @scores << score
+  end 
 
-    def grade 
-        @scores.sum.to_f.truncate(2) / @scores.length 
-    end 
+  def grade 
+    @scores.sum.to_f.truncate(2) / @scores.length 
+  end 
 end 

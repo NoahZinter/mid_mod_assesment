@@ -49,6 +49,24 @@ describe Term do
     end 
   end 
 
+  describe "#open_courses" do 
+    it 'collects courses by openness' do 
+      term = Term.new("Winter 2021") 
+      geography = Course.new("Geography", 2)
+      math = Course.new("Math", 3)
+      pottery = Course.new("Pottery", 3)
+      term.add_course(geography)
+      term.add_course(math)
+      term.add_course(pottery)
+      student1 = Student.new({name: "Morgan", age: 21})
+      student2 = Student.new({name: "Jordan", age: 29})
+      geography.enroll(student1)
+      geography.enroll(student2)
+
+      expect(term.open_courses).to eq([math, pottery])
+    end
+  end 
+
   describe "#list_open_courses" do 
     it 'returns open courses' do 
       term = Term.new("Winter 2021") 
@@ -79,6 +97,28 @@ describe Term do
     end 
   end 
 
+  describe "#all_students" do 
+    it 'gathers a list of all students as objects' do 
+      term = Term.new("Winter 2021") 
+      geography = Course.new("Geography", 2)
+      math = Course.new("Math", 3)
+      pottery = Course.new("Pottery", 3)
+      term.add_course(geography)
+      term.add_course(math)
+      term.add_course(pottery)
+      student1 = Student.new({name: "Morgan", age: 21})
+      student2 = Student.new({name: "Jordan", age: 29})
+      student3 = Student.new({name: "Tim", age: 43})
+      student4 = Student.new({name: "Alice", age: 19})
+      geography.enroll(student1)
+      geography.enroll(student2)
+      math.enroll(student3)
+      pottery.enroll(student4)
+
+      expect(term.all_students).to eq([student1, student2, student3, student4])
+    end
+  end 
+
   describe "#list_all_students" do 
     it 'lists students across all courses' do 
       term = Term.new("Winter 2021") 
@@ -100,5 +140,4 @@ describe Term do
       expect(term.list_all_students).to eq(["Morgan", "Jordan", "Tim", "Alice"])
     end
   end 
-
 end
