@@ -45,7 +45,4 @@ describe Course do
       expect(course.students).to eq([student1, student2])
     end
   end 
-    
-
-
 end 
