@@ -24,4 +24,15 @@ describe Student do
         expect(student.scores).to eq([89, 78])
         end
     end 
+
+    describe '#grade' do 
+        it 'returns an average of all scores' do 
+            student = Student.new({name: "Morgan", age: 21})    
+            student.log_score(89)
+            student.log_score(78)
+
+            expect(student.grade).to eq(83.5)
+        end
+    end
+     
 end 
